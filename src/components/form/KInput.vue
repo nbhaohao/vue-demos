@@ -5,9 +5,12 @@
 </template>
 
 <script>
+import emitter from "@/mixins/emitter";
+
 export default {
   inheritAttrs: false,
   name: "KInput",
+  mixins: [emitter],
   props: {
     value: {
       type: String,
@@ -21,7 +24,7 @@ export default {
   methods: {
     onInput(event) {
       this.$emit("input", event.target.value);
-      this.$parent.$emit("validate")
+      this.dispatch("KFormItem", "validate");
     }
   }
 };

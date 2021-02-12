@@ -13,6 +13,7 @@ import Schema from "async-validator";
 export default {
   inject: ["form"],
   name: "KFormItem",
+  componentName: "KFormItem",
   props: {
     label: {
       type: String,
