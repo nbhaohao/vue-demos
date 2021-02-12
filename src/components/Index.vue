@@ -1,14 +1,18 @@
 <template>
   <div class="hello">
-    hello world
+    <FormDemo />
   </div>
 </template>
 
 <script>
+import FormDemo from "@/components/form/FormDemo";
 export default {
   name: "Index",
   props: {
     msg: String
+  },
+  components: {
+    FormDemo
   }
 };
 </script>
