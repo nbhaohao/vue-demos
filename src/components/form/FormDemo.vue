@@ -23,8 +23,6 @@
 import KInput from "@/components/form/KInput.vue";
 import KFormItem from "@/components/form/KFormItem.vue";
 import KForm from "@/components/form/KForm.vue";
-import create from "@/utils/create";
-import Notice from "@/components/Notice";
 
 export default {
   data() {
@@ -47,11 +45,11 @@ export default {
   methods: {
     login() {
       this.$refs.loginForm.validate(isValid => {
-        create(Notice, {
+        this.$notice({
           title: "提示",
           message: isValid ? "请求登录" : "校验失败",
           duration: 3000
-        }).show();
+        });
         // if (isValid) {
         //   console.log("request login");
         // } else {
