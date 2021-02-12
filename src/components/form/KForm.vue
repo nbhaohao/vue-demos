@@ -21,7 +21,6 @@ export default {
   },
   methods: {
     validate(cb) {
-      console.log("123", this.$children);
       Promise.all(
         this.$children.filter(item => item.prop).map(item => item.validate())
       )
