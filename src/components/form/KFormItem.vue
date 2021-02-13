@@ -9,11 +9,13 @@
 
 <script>
 import Schema from "async-validator";
+import emitter from "@/mixins/emitter";
 
 export default {
   inject: ["form"],
   name: "KFormItem",
   componentName: "KFormItem",
+  mixins: [emitter],
   props: {
     label: {
       type: String,
@@ -28,6 +30,12 @@ export default {
     this.$on("validate", () => {
       this.validate();
     });
+    if (this.prop) {
+      this.dispatch("KForm", "form.addField", [this]);
+    }
+  },
+  beforeDestroy() {
+    this.dispatch("KForm", "form.removeField", [this]);
   },
   data() {
     return {

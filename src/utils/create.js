@@ -17,11 +17,7 @@ import Vue from "vue";
 
 export default function create(component, props) {
   const Component = Vue.extend(component);
-  console.log(props);
-  const vm = new Component();
-  for (const key in props) {
-    vm[key] = props[key];
-  }
+  const vm = new Component({ propsData: props });
   vm.$mount();
   document.body.appendChild(vm.$el);
   vm.remove = () => {
