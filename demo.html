@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>{{counter}}</div>
+      <div>{{message}}</div>
+    </div>
+    <script src="./demo.js"></script>
+    <script>
+      var app = new FakeVue({
+        el: "#app",
+        data: {
+          counter: 1,
+          message: "test"
+        }
+      });
+      setInterval(() => {
+        app.counter++;
+      }, 1000);
+    </script>
+  </body>
+</html>
