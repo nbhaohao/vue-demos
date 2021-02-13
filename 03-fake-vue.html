@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{counter}}</p>
+      <p v-text="counter"></p>
+      <p v-html="desc"></p>
+    </div>
+    <script src="fake-vue.js"></script>
+    <script>
+      const app = new FakeVue({
+        el: "#app",
+        data: {
+          counter: 1,
+          desc: `<span style="color: green;">测试样式</span>`
+        }
+      });
+      setInterval(() => {
+        app.counter++;
+      }, 1000);
+    </script>
+  </body>
+</html>

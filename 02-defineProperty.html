@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      // 对象响应式原理
+      function defineReactive(obj, key, value) {
+        Object.defineProperty(obj, key, {
+          get() {
+            console.log("get", value);
+            return value;
+          },
+          set(newValue) {
+            if (newValue !== value) {
+              console.log("set", newValue);
+              value = newValue;
+              update();
+            }
+          }
+        });
+      }
+      function update() {
+        app.innerHTML = obj.foo;
+      }
+      const obj = {};
+      defineReactive(obj, "foo", "foo");
+      setInterval(() => {
+        obj.foo = new Date().toLocaleTimeString();
+      }, 1000);
+    </script>
+  </body>
+</html>
