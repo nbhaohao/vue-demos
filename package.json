@@ -4,19 +4,21 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "serve:ssr": "nodemon ./ssr/03_ssr.js",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "serve:ssr": "nodemon ./ssr/03_ssr.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "vue": "^2.6.12",
+    "vue-router": "^3.2.0",
     "vue-server-renderer": "^2.6.12"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "^4.5.11",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",

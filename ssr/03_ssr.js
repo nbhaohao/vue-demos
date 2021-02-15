@@ -3,25 +3,37 @@ const Vue = require("vue");
 const { createRenderer } = require("vue-server-renderer");
 const renderer = createRenderer();
 const app = express();
+const Router = require("vue-router");
+Vue.use(Router);
 
-app.get("/", (req, res) => {
+const router = new Router({
+  routes: [
+    {
+      path: "/",
+      component: { template: "<div>Index</div>" }
+    },
+    {
+      path: "/detail",
+      component: { template: "<div>Detail</div>" }
+    }
+  ]
+});
+
+app.get("*", (req, res) => {
   const app = new Vue({
-    template: `<div @click="handleClick">{{msg}}</div>`,
+    router,
+    template: `<div>
+    <router-link to="/">index</router-link>
+    <router-link to="/detail">detail</router-link>
+    <router-view />
+    </div>`,
     data() {
       return {
         msg: "hello world"
       };
-    },
-    methods: {
-      // 无法工作，需要"激活"
-      handleClick() {
-        this.msg = this.msg
-          .split("")
-          .reverse()
-          .join("");
-      }
     }
   });
+  router.replace(req.url);
   renderer
     .renderToString(app)
     .then(html => {
